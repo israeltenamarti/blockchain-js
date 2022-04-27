@@ -1,0 +1,50 @@
+VERSION 1
+---------
+
+https://www.youtube.com/watch?v=RFSZDYszFWQ
+
+hex2ascii - https://github.com/miguelmota/hex2ascii
+crypto-js - https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js
+
+Explicación
+-----------
+Consisten en la creación de 2 clases:
+
+    - Clase Bloque
+        Clase que tiene los siguientes campos:
+            hash = null;                                                  //Cada bloque tiene un hash que en la creación esta vacio. Se rellena al agregarlo a la blockchain.
+            height = 0;                                                   //Numero de bloque dentro de la cadena
+            body = JSON.stringify(data).toString('hex');                  //Cuerpo del bloque que lo serializamos y los pasamos a hexadecimal
+            time = 0;                                                     //Timestamp de cuando se agrega el bloque a la blockchain
+            previousBlockHash = '';                                       //Hash del bloque anterior
+
+        Y las siguientes funciones:
+            validate()     -> Función para validar que un bloque es correcto, que no se ha modificado (No ha sido "dumpered")
+
+            getBlockData() -> Función para obtener los datos del Bloque
+                              NOTA: Pero si lo paso a hexadecimal y luego le aplico el Json parse da error. Ahora lo tengo en texto
+            
+            toString()     -> Función para mostrar por consola la información del bloque
+
+    - Clase Blockchain
+        Clase que tiene los siguientes campos:
+            chain = [];          //Array de objetos para almacenar los bloques
+            height= -1;          //Es la altura de la Blockchain (0 es el primer bloque)
+        
+        Y las siguientes funciones:
+            addBlock(block) -> Función para agregar un bloque a la Blockchaoin
+
+            validateChain() -> Función para revisar la Blockchain antes de agregar un boque
+
+            print()         -> Función para recorrer la blockchain e imprimirla
+            
+
+VERSION 2
+---------
+
+https://www.youtube.com/watch?v=z6oYEYtMLbo
+
+**Hacer la creación del bloque sincrona
+**Ver por que no registra "height"
+**Ajustar div que muestra los datos
+**Pendiente quitar todo lo que sobra ahora
